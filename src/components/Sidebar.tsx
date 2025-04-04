@@ -16,7 +16,8 @@ import {
   SidebarMenu, 
   SidebarMenuButton, 
   SidebarMenuItem, 
-  SidebarMenuLabel, 
+  SidebarGroup,
+  SidebarGroupLabel,
   SidebarTrigger 
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
@@ -51,27 +52,29 @@ const Sidebar = () => {
           </div>
           
           <SidebarMenu>
-            <SidebarMenuLabel>Main Menu</SidebarMenuLabel>
-            {menuItems.map((item, index) => (
-              <SidebarMenuItem key={index}>
-                <SidebarMenuButton 
-                  className={cn(
-                    "flex w-full justify-between items-center",
-                    item.active && "bg-primary/10 text-primary"
-                  )}
-                >
-                  <div className="flex items-center">
-                    <item.icon className="mr-2 h-5 w-5" />
-                    <span>{item.label}</span>
-                  </div>
-                  {item.badge && (
-                    <div className="h-5 w-5 rounded-full bg-fitConnect-primary flex items-center justify-center text-[10px] font-medium text-white">
-                      {item.badge}
+            <SidebarGroup>
+              <SidebarGroupLabel>Main Menu</SidebarGroupLabel>
+              {menuItems.map((item, index) => (
+                <SidebarMenuItem key={index}>
+                  <SidebarMenuButton 
+                    className={cn(
+                      "flex w-full justify-between items-center",
+                      item.active && "bg-primary/10 text-primary"
+                    )}
+                  >
+                    <div className="flex items-center">
+                      <item.icon className="mr-2 h-5 w-5" />
+                      <span>{item.label}</span>
                     </div>
-                  )}
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            ))}
+                    {item.badge && (
+                      <div className="h-5 w-5 rounded-full bg-fitConnect-primary flex items-center justify-center text-[10px] font-medium text-white">
+                        {item.badge}
+                      </div>
+                    )}
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarGroup>
           </SidebarMenu>
         </SidebarContent>
       </ShadcnSidebar>
